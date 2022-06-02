@@ -1,0 +1,23 @@
+name: docker-getting-started
+services:
+  docs:
+    build:
+      context: /home/ahmed/Desktop/FAST - MSCS/Cloud Computing/docker/docker-getting-started
+      dockerfile: Dockerfile
+      target: dev
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 8000
+        published: "8000"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /home/ahmed/Desktop/FAST - MSCS/Cloud Computing/docker/docker-getting-started
+        target: /app
+        bind:
+          create_host_path: true
+networks:
+  default:
+    name: docker-getting-started_default
